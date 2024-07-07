@@ -1,0 +1,24 @@
+.custom-button {
+    background-color: #773CBE;
+    padding: 0.6rem 1.25rem;
+    color: white;
+    border-radius: 0.25rem;
+}
+
+.custom-button:hover {
+    background-color: #5a2d9b;
+}
+
+.gradiant-head {
+    @apply bg-clip-text text-transparent;
+      background-image: linear-gradient(90deg, rgb(188, 64, 188), rgb(86, 167, 207), rgb(26, 155, 236)
+
+      );
+}
+.faq-left {
+    /* background-color: #773CBE; */
+    padding: 1.5rem;
+    border: #E5E7EB 1px solid;
+    border-radius: 8px;
+    font-weight: 500;
+}
