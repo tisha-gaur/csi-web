@@ -5,7 +5,7 @@ import star3 from '../assets/star3.png';
 
 const Faq = () => {
     const [selectedCategory, setSelectedCategory] = useState('Program Overview');
-    const [expandedQuestion, setExpandedQuestion] = useState(null);
+    const [expandedQuestion, setExpandedQuestion] = useState(0);
 
     const toggleQuestion = (index) => {
         setExpandedQuestion((prev) => (prev === index ? null : index));
@@ -13,8 +13,8 @@ const Faq = () => {
 
     const renderQuestions = () => {
         return faqData[selectedCategory].map((item, index) => (
-            <div key={index} className={`flex justify-start items-start gap-4 faq-left p-4  ${expandedQuestion === index ? 'bg-purple-100' : 'bg-white'}`}>
-                <div className="flex justify-start items-center gap-3 cursor-pointer" onClick={() => toggleQuestion(index)}>
+            <div key={index} className={`flex justify-start items-start  gap-4 faq-left p-8 cursor-pointer  ${expandedQuestion === index ? 'bg-purple-100' : 'bg-white'}`}>
+                <div className="flex items-center gap-3 " onClick={() => toggleQuestion(index)}>
                     <img src={expandedQuestion === index ? star2 : star3} className='h-5 w-5' alt="" />
                 </div>
                 <div className="flex flex-col gap-3" onClick={() => toggleQuestion(index)}>
@@ -42,7 +42,7 @@ const Faq = () => {
                         ))}
                     </div>
 
-                    <div className="flex flex-col justify-center gap-3 w-6/12">
+                    <div className="flex flex-col r gap-3 w-6/12">
                         <p className='text-4xl font-semibold pb-10'>Questions.</p>
                         {renderQuestions()}
                     </div>
