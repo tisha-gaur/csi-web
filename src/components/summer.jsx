@@ -1,29 +1,43 @@
-import React from 'react'
-import Nav from './nav'
-import '../custom.css';
-import summer from '../assets/summer1.png'
+import React, { useState, useEffect } from "react";
+import Nav from "./nav";
+import "../custom.css";
+import summer from "../assets/summer1.png";
+import Form from './form'
+import Slide1 from "./slide1";
+import Slide2 from "./slide2";
+import Slide3 from "./slide3";
+
 const Summer = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(1);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide(prevSlide => (prevSlide === 3 ? 1 : prevSlide + 1));
+        }, 5000);
+       
+    }, []);
+
     return (
         <div>
-            <div className="bg-[url('/src/assets/summerBg.png')] bg-cover bg-center h-screen relative">
-                
-                <div className="ml-28 pt-20 w-3/5 ">
-                    <div className="w-full h-full bg-zinc-700 flex items-center justify-center"><img src={summer} className="object-cover w-full h-full" alt=""  /></div>
-                </div>
-                <div className="h-3/4 w-6/12 bg-white absolute top-28 right-28 p-20 ">
-                    <p className='font-bold text-3xl pb-3 gradiant-head'>Unlock Your Potential</p>
-                    <div className="flex flex-col justify-between gap-4">
-                        <p className='text-5xl font-medium tracking-wider'>Be Brilliant,</p>
-                        <p className='text-5xl font-medium tracking-wider'>Be Ambitious,</p>
-                        <p className='text-5xl font-medium tracking-wider'>Be First</p>
+            <div className="bg-[url('/src/assets/summerBg.png')] bg-cover bg-center md:h-screen h-fit relative ">
+                <div className="md:ml-28 md:pt-20 md:w-3/5 sm:mb-0 ">
+                    <div className="w-full h-full bg-zinc-700 flex items-center justify-center">
+                        <img src={summer} className="object-cover w-full h-full" alt="" />
                     </div>
-                    <p className='text-3xl font-semibold pt-4 pb-20 tracking-wider '>with Celebal Technologies.</p>
-                    <button className='custom-button text-lg tracking-wide'>Register Now</button>
                 </div>
+                <div className=" md:w-6/12 bg-white  md:absolute top-28 right-28 p-8 xl:p-20 md:p-12 ">
+                    {currentSlide === 1 && <Slide1 />}
+                    {currentSlide === 2 && <Slide2 />}
+                    {currentSlide === 3 && <Slide3 />}
+                    <button onClick={() => setShowModal(true)} className='custom-button text-lg tracking-wide'>
+                        Register Now
+                    </button>
+                </div>
+                {showModal && <Form onClose={() => setShowModal(false)} />}
             </div>
         </div>
-        
-    )
-}
+    );
+};
 
-export default Summer
+export default Summer;

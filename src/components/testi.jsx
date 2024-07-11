@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoArrowForwardCircle, IoArrowBackCircle } from 'react-icons/io5';
 import Testicard from './testicard';
 import { testidata } from '../data/testidata';
 
 const Testi = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
 
-  const visibleCards = 3; 
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  function getVisibleCards() {
+    if (window.innerWidth >= 1468) {
+      return 3;
+    } else if (window.innerWidth>=997) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
 
   const handleNext = () => {
     if (currentIndex < testidata.length - visibleCards) {

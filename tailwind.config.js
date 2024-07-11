@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       spacing: {
-        '30rem': '30rem',  // Custom spacing value
+        '30rem': '30rem',
         '42rem': '42rem',
         '36rem': '36rem',
         '51rem': '51rem',
@@ -16,13 +16,15 @@ export default {
         '32rem': '32rem',
         '3rem': '3rem',
         '10rem': '10rem',
+        '5.4rem': '5.4rem',
       },
 
       screens: {
-        'sm': '480px',   // Custom small breakpoint
-        'md': '768px',   // Custom medium breakpoint
-        'lg': '1024px',  // Custom large breakpoint
-        'xl': '1390px',  // Custom extra large breakpoint
+        'sm': '480px',   
+        'md': '768px',   
+        'lg': '1024px',  
+        'xl': '1280px',  
+        'resp': '1198px'
       },
     },
   },
