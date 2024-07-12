@@ -17,7 +17,7 @@ import Footer from './components/footer'
 import Nav from './components/nav'
 const App = () => {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Nav />
       <Summer />
       <Global />
